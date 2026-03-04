@@ -1,0 +1,13 @@
+// =================================
+//   APP LAYOUT
+// =================================
+
+@use '../../base/variables' as *;
+
+.app-container {
+  min-height: 100svh;
+  background-color: $bg-feature;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
