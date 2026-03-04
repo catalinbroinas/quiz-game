@@ -1,0 +1,55 @@
+// =================================
+//   BUTTONS
+// =================================
+
+// Imports
+@use 'sass:color';
+@use '../../base/variables' as *;
+@use 'components-mixins' as components;
+
+// Primary button
+.btn-primary {
+  @include components.button-base(
+    $bg: $primary,
+    $color: $text-inverse,
+    $shadow: true
+  );
+}
+
+// Secondary button
+.btn-secondary {
+  @include components.button-base(
+    color.scale($primary, $lightness: 90%),
+    color.scale($primary, $lightness: -10%)
+  );
+}
+
+// Default button
+.btn-tertiary {
+  @include components.button-base(
+    $bg-surface,
+    $text-primary
+  );
+  border: 1px solid $border-default;
+}
+
+// Outline primary button
+.btn-primary-outline {
+  @include components.button-base(
+    transparent,
+    $primary,
+    $primary,
+    color.scale($primary, $lightness: 90%)
+  );
+  border: 2px solid $primary;
+}
+
+// Large button
+.btn-lg {
+  @include components.button-size(0.75rem, 1.5rem, $fs-lg, $rounded-lg);
+}
+
+// Rounded button
+.btn-rounded {
+  border-radius: 2rem;
+}

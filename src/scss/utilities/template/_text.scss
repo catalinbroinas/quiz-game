@@ -1,0 +1,27 @@
+// =================================
+//   TEXT
+// =================================
+
+// Imports
+@use '../../base/variables' as *;
+
+// Alignments
+.text-start   { text-align: left; }
+.text-center  { text-align: center; }
+.text-end     { text-align: right; }
+
+// Transforms
+.text-lowercase   { text-transform: lowercase; }
+.text-uppercase   { text-transform: uppercase; }
+.text-capitalize  { text-transform: capitalize; }
+
+// Weights
+.fw-bolder  { font-weight: 700; }
+.fw-bold    { font-weight: 600; }
+.fw-medium  { font-weight: 500; }
+.fw-normal  { font-weight: 400; }
+
+// Sizes
+.fs-sm  { font-size: $fs-sm; line-height: 1.5; }
+.fs-md  { font-size: $fs-md; line-height: 1.6; }
+.fs-lg  { font-size: $fs-lg; line-height: 1.5; }

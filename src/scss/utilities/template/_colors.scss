@@ -1,0 +1,24 @@
+// =================================
+//   COLORS
+// =================================
+
+// Imports
+@use '../../base/variables' as *;
+
+// Backgrounds (layout / surfaces)
+.bg-page    { background-color: $bg-page; }
+.bg-surface { background-color: $bg-surface; }
+.bg-section { background-color: $bg-section; }
+.bg-feature  { background-color: $bg-feature; }
+
+// Semantic UI
+.bg-primary   { background-color: $primary; }
+.bg-secondary { background-color: $secondary; }
+
+// Text
+.text-primary   { color: $text-primary; }
+.text-secondary { color: $text-secondary; }
+.text-accent    { color: $text-accent; }
+.text-muted     { color: $text-muted; }
+.text-inverse,
+.text-light     { color: $text-inverse; }
