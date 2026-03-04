@@ -1,0 +1,27 @@
+// =================================
+//   GAME
+// =================================
+
+@use '../../base/variables' as *;
+@use '../../base/mixins' as *;
+
+.game {
+  background-color: $bg-page;
+  min-height: 300px;
+  width: 100%;
+  max-width: 680px;
+  border-radius: 1rem;
+  padding: 2rem 3rem;
+  box-shadow: $shadow-sm;
+
+  @include media-breakpoint-down($bp-md) {
+    border-radius: 0;
+  }
+
+  &__title {
+    @include title($color: $text-accent);
+    text-align: center;
+    margin-bottom: 2rem;
+    letter-spacing: 1px;
+  }
+}
