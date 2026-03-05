@@ -1,10 +1,18 @@
 
-function NumberOfQuestions() {
+function NumberOfQuestions({ numQuestions, onNumQuestionsChange }) {
   return (
     <div className="form-select-group">
-      <label htmlFor="number-of-questions" className="form-label-text">Number of questions:</label>
+      <label
+        htmlFor="number-of-questions"
+        className="form-label-text"
+      >Number of questions:</label>
 
-      <select id="number-of-questions" className="form-select">
+      <select
+        id="number-of-questions"
+        className="form-select"
+        value={numQuestions}
+        onChange={(e) => onNumQuestionsChange(e.target.value)}
+      >
         <option value={1}>1</option>
         <option value={3}>3</option>
         <option value={5}>5</option>
