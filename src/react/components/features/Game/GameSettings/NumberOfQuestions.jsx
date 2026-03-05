@@ -1,3 +1,4 @@
+import { QUESTION_OPTIONS } from "../../../../constants/quizOptions";
 
 function NumberOfQuestions({ numQuestions, onNumQuestionsChange }) {
   return (
@@ -13,9 +14,11 @@ function NumberOfQuestions({ numQuestions, onNumQuestionsChange }) {
         value={numQuestions}
         onChange={(e) => onNumQuestionsChange(e.target.value)}
       >
-        <option value={1}>1</option>
-        <option value={3}>3</option>
-        <option value={5}>5</option>
+        {QUESTION_OPTIONS.map(option => (
+          <option key={option} value={option}>
+            {option}
+          </option>
+        ))}
       </select>
     </div>
   );

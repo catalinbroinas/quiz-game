@@ -1,3 +1,4 @@
+import { DIFFICULTY_OPTIONS } from "../../../../constants/quizOptions";
 
 function DifficultyLevel({ difficulty, onDifficultyChange }) {
   return (
@@ -13,9 +14,11 @@ function DifficultyLevel({ difficulty, onDifficultyChange }) {
         value={difficulty}
         onChange={(e) => onDifficultyChange(e.target.value)}
       >
-        <option value="easy">Easy</option>
-        <option value="medium">Medium</option>
-        <option value="hard">Hard</option>
+        {DIFFICULTY_OPTIONS.map(({ value, label }) => (
+          <option key={value} value={value}>
+            {label}
+          </option>
+        ))}
       </select>
     </div>
   );

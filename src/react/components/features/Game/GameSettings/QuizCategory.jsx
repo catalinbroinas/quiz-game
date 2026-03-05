@@ -1,3 +1,4 @@
+import { CATEGORY_OPTIONS } from "../../../../constants/quizOptions";
 
 function QuizCategory({ category, onCategoryChange }) {
   return (
@@ -13,9 +14,11 @@ function QuizCategory({ category, onCategoryChange }) {
         value={category}
         onChange={(e) => onCategoryChange(e.target.value)}
       >
-        <option value="technology">Technology</option>
-        <option value="geography">Geography</option>
-        <option value="sport">Sport</option>
+        {CATEGORY_OPTIONS.map(({ value, label }) => (
+          <option key={value} value={value}>
+            {label}
+          </option>
+        ))}
       </select>
     </div>
   );
