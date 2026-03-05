@@ -1,14 +1,14 @@
 import {
-  CATEGORY_OPTIONS,
-  DIFFICULTY_OPTIONS
+  CATEGORY,
+  DIFFICULTY
 } from "../constants/quizOptions";
 
 const questions = [
   {
     id: 1,
     question: 'What does HTML stand for?',
-    category: CATEGORY_OPTIONS[0].value,
-    difficulty: DIFFICULTY_OPTIONS[0].value,
+    category: CATEGORY.TECHNOLOGY,
+    difficulty: DIFFICULTY.EASY,
     answers: [
       "Hyper Text Markup Language",
       "Home Tool Markup Language",
