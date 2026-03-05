@@ -1,4 +1,5 @@
 import GameSettings from "./GameSettings/GameSettings";
+import Question from "./Question";
 
 function Game() {
   return (
@@ -6,6 +7,7 @@ function Game() {
       <h1 className="game__title">Quiz Game</h1>
 
       <GameSettings />
+      <Question />
     </div>
   );
 }
