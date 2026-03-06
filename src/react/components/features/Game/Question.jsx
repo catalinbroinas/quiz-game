@@ -1,71 +1,45 @@
 
-function Question() {
+function Question({
+  question,
+  answers,
+  selectedAnswer,
+  onAnswerChange,
+  onSubmit
+}) {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit(selectedAnswer);
+  };
+
   return (
     <div className="game__question">
-      <form className="form-container">
+      <form className="form-container" onSubmit={handleSubmit}>
         <fieldset className="form-fieldset">
           <legend className="form-label-text">
-            What does HTML stand for?
+            {question}
           </legend>
 
-          <div className="form-check">
-            <input
-              type="radio"
-              name="answer"
-              id="answer-1"
-              className="form-check-input"
-            />
+          {answers.map((answer, index) => (
+            <div key={index} className="form-check">
+              <input
+                type="radio"
+                name="answer"
+                id={`answer-${index}`}
+                className="form-check-input"
+                value={index}
+                checked={selectedAnswer === index}
+                onChange={() => onAnswerChange(index)}
+              />
 
-            <label
-              htmlFor="answer-1"
-              className="form-check-label"
-            >Hyper Text Markup Language</label>
-          </div>
-
-          <div className="form-check">
-            <input
-              type="radio"
-              name="answer"
-              id="answer-2"
-              className="form-check-input"
-            />
-
-            <label
-              htmlFor="answer-2"
-              className="form-check-label"
-            >Home Tool Markup Language</label>
-          </div>
-
-          <div className="form-check">
-            <input
-              type="radio"
-              name="answer"
-              id="answer-3"
-              className="form-check-input"
-            />
-
-            <label
-              htmlFor="answer-3"
-              className="form-check-label"
-            >Hyperlinks and Text Markup Language</label>
-          </div>
-
-          <div className="form-check">
-            <input
-              type="radio"
-              name="answer"
-              id="answer-4"
-              className="form-check-input"
-            />
-
-            <label
-              htmlFor="answer-4"
-              className="form-check-label"
-            >Hyper Tool Multi Language</label>
-          </div>
+              <label
+                htmlFor={`answer-${index}`}
+                className="form-check-label"
+              >{answer}</label>
+            </div>
+          ))}
         </fieldset>
 
-        <button className="btn-primary">Check</button>
+        <button type="submit" className="btn-primary">Check</button>
       </form>
     </div>
   );
