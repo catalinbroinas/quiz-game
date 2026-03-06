@@ -24,3 +24,9 @@ export const CATEGORY_OPTIONS = [
   { value: CATEGORY.GEOGRAPHY, label: 'Geography' },
   { value: CATEGORY.SPORT, label: 'Sport' }
 ];
+
+export const DEFAULT_SETTINGS = {
+  numQuestions: 1,
+  difficulty: DIFFICULTY.EASY,
+  category: CATEGORY.TECHNOLOGY
+};

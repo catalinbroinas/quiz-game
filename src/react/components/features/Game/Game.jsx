@@ -1,13 +1,10 @@
 import { useState } from "react";
 import GameSettings from "./GameSettings/GameSettings";
 import Question from "./Question";
+import { DEFAULT_SETTINGS } from "../../../constants/quizOptions";
 
 function Game() {
-  const [settings, setSettings] = useState({
-    numQuestions: 0,
-    difficulty: undefined,
-    category: undefined
-  });
+  const [settings, setSettings] = useState(DEFAULT_SETTINGS);
   const [gameStatus, setGameStatus] = useState('idle');
 
   const handleApplySettings = (newSettings) => {
