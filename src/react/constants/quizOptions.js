@@ -33,3 +33,10 @@ export const DEFAULT_SETTINGS = {
   difficulty: DIFFICULTY.EASY,
   category: CATEGORY.TECHNOLOGY
 };
+
+export const GAME_STATUS = {
+  IDLE: 'idle',
+  LOADING: 'loading',
+  PLAYING: 'playing',
+  END: 'end'
+};
