@@ -1,4 +1,5 @@
 
+// Enums
 export const DIFFICULTY = {
   EASY: "easy",
   MEDIUM: "medium",
@@ -11,6 +12,7 @@ export const CATEGORY = {
   SPORT: "sport"
 };
 
+// Options for UI
 export const QUESTION_OPTIONS = [1, 3, 5];
 
 export const DIFFICULTY_OPTIONS = [
@@ -25,6 +27,7 @@ export const CATEGORY_OPTIONS = [
   { value: CATEGORY.SPORT, label: 'Sport' }
 ];
 
+// Default State
 export const DEFAULT_SETTINGS = {
   numQuestions: 1,
   difficulty: DIFFICULTY.EASY,
