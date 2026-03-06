@@ -5,13 +5,24 @@ import {
   DEFAULT_SETTINGS,
   GAME_STATUS
 } from "../../../constants/quizOptions";
+import questions from "../../../data/questions";
+import { getFilteredQuestions } from "../../../utils/questions";
 
 function Game() {
   const [settings, setSettings] = useState(DEFAULT_SETTINGS);
   const [gameStatus, setGameStatus] = useState(GAME_STATUS.IDLE);
+  const [quizQuestions, setQuizQuestions] = useState([]);
+  const [currentQuestion, setCurrentQuestion] = useState(null);
 
   const handleApplySettings = (newSettings) => {
     setSettings(newSettings);
+
+    const filteredQuestions = getFilteredQuestions(questions, newSettings);
+    const selectedQuestions = filteredQuestions.slice(0, newSettings.numQuestions);
+
+    setQuizQuestions(selectedQuestions);
+    setCurrentQuestion(selectedQuestions[0]);
+
     setGameStatus(GAME_STATUS.PLAYING);
   };
 
@@ -21,6 +32,13 @@ function Game() {
 
       {gameStatus === GAME_STATUS.IDLE && (
         <GameSettings onApply={handleApplySettings} />
+      )}
+
+      {gameStatus === GAME_STATUS.PLAYING && (
+        <Question
+          question={currentQuestion.question}
+          answers={currentQuestion.answers}
+        />
       )}
     </div>
   );
