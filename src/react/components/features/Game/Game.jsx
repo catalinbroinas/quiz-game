@@ -6,7 +6,7 @@ import {
   GAME_STATUS
 } from "../../../constants/quizOptions";
 import questions from "../../../data/questions";
-import { getFilteredQuestions } from "../../../utils/questions";
+import { getFilteredQuestions, getRandomQuestions } from "../../../utils/questions";
 
 function Game() {
   const [settings, setSettings] = useState(DEFAULT_SETTINGS);
@@ -18,7 +18,7 @@ function Game() {
     setSettings(newSettings);
 
     const filteredQuestions = getFilteredQuestions(questions, newSettings);
-    const selectedQuestions = filteredQuestions.slice(0, newSettings.numQuestions);
+    const selectedQuestions = getRandomQuestions(filteredQuestions, newSettings.numQuestions);
 
     setQuizQuestions(selectedQuestions);
     setCurrentQuestion(selectedQuestions[0]);
