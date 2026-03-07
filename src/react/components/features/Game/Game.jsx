@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 import GameSettings from "./GameSettings/GameSettings";
 import Question from "./Question";
+import GameInfo from "./GameInfo";
 import {
   DEFAULT_SETTINGS,
   GAME_STATUS
@@ -14,6 +15,9 @@ function Game() {
   const [gameStatus, setGameStatus] = useState(GAME_STATUS.IDLE);
   const [quizQuestions, setQuizQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [score, setScore] = useState(0);
+
+  const currentQuestion = quizQuestions[currentQuestionIndex];
 
   useEffect(() => {
     if (gameStatus === GAME_STATUS.LOADING) {
@@ -41,10 +45,18 @@ function Game() {
       )}
 
       {gameStatus === GAME_STATUS.PLAYING && quizQuestions.length > 0 && (
-        <Question
-          question={quizQuestions[currentQuestionIndex].question}
-          answers={quizQuestions[currentQuestionIndex].answers}
-        />
+        <>
+          <GameInfo 
+            currentQuestion={currentQuestionIndex + 1}
+            totalQuestions={quizQuestions.length}
+            score={score}
+          />
+
+          <Question
+            question={currentQuestion.question}
+            answers={currentQuestion.answers}
+          />
+        </>
       )}
     </div>
   );
