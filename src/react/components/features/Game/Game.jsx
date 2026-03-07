@@ -15,7 +15,7 @@ function Game() {
   const [gameStatus, setGameStatus] = useState(GAME_STATUS.IDLE);
   const [quizQuestions, setQuizQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [score, setScore] = useState(0);
+  const [score, setScore] = useState(null);
 
   const currentQuestion = quizQuestions[currentQuestionIndex];
 
@@ -27,6 +27,7 @@ function Game() {
 
       setQuizQuestions(selectedQuestions);
       setCurrentQuestionIndex(0);
+      setScore(0);
       setGameStatus(GAME_STATUS.PLAYING);
     }
   }, [gameStatus, settings]);
