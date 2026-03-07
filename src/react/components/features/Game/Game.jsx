@@ -16,14 +16,7 @@ function Game() {
 
   const handleApplySettings = (newSettings) => {
     setSettings(newSettings);
-
-    const filteredQuestions = getFilteredQuestions(questions, newSettings);
-    const selectedQuestions = getRandomQuestions(filteredQuestions, newSettings.numQuestions);
-
-    setQuizQuestions(selectedQuestions);
-    setCurrentQuestion(selectedQuestions[0]);
-
-    setGameStatus(GAME_STATUS.PLAYING);
+    setGameStatus(GAME_STATUS.LOADING);
   };
 
   return (
