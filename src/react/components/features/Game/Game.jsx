@@ -1,12 +1,15 @@
-import { useState, useEffect, use } from "react";
+import { useState, useEffect } from "react";
+
 import GameSettings from "./GameSettings/GameSettings";
 import Question from "./Question";
 import GameInfo from "./GameInfo";
+
 import {
   DEFAULT_SETTINGS,
   GAME_STATUS
 } from "../../../constants/quizOptions";
 import questions from "../../../data/questions";
+
 import { getFilteredQuestions } from "../../../utils/questions";
 import { shuffleArray, takeFirst } from "../../../../js/utils/arrayUtils";
 
