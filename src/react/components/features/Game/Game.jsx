@@ -19,6 +19,7 @@ function Game() {
   const [quizQuestions, setQuizQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(null);
+  const [selectedAnswer, setSelectedAnswer] = useState(null);
 
   const currentQuestion = quizQuestions[currentQuestionIndex];
 
@@ -40,6 +41,22 @@ function Game() {
     setGameStatus(GAME_STATUS.LOADING);
   };
 
+  const handleSubmitAnswer = (answerIndex) => {
+    const currentQuestion = quizQuestions[currentQuestionIndex];
+
+    const isCorrect = answerIndex === currentQuestion.correctAnswer;
+    if (isCorrect) {
+      setScore(prev => prev + 1);
+    }
+
+    const isLastQuestion = currentQuestionIndex === quizQuestions.length - 1;
+    isLastQuestion 
+      ? setGameStatus(GAME_STATUS.END)
+      : setCurrentQuestionIndex(prev => prev + 1);
+      
+    setSelectedAnswer(null);
+  };
+
   return (
     <div className="game">
       <h1 className="game__title">Quiz Game</h1>
@@ -59,6 +76,9 @@ function Game() {
           <Question
             question={currentQuestion.question}
             answers={currentQuestion.answers}
+            selectedAnswer={selectedAnswer}
+            onAnswerChange={setSelectedAnswer}
+            onSubmit={handleSubmitAnswer}
           />
         </>
       )}
