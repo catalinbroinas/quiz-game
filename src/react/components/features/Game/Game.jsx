@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import GameSettings from "./GameSettings/GameSettings";
 import Question from "./Question";
 import GameInfo from "./GameInfo";
+import GameResult from "./GameResult";
 
 import {
   DEFAULT_SETTINGS,
@@ -59,6 +60,14 @@ function Game() {
     setSelectedAnswer(null);
   };
 
+  const handleResetGame = () => {
+    setSettings(DEFAULT_SETTINGS);
+    setQuizQuestions([]);
+    setCurrentQuestionIndex(0);
+    setScore(null);
+    setGameStatus(GAME_STATUS.IDLE);
+  };
+
   return (
     <div className="game">
       <h1 className="game__title">Quiz Game</h1>
@@ -83,6 +92,13 @@ function Game() {
             onSubmit={handleSubmitAnswer}
           />
         </>
+      )}
+
+      {gameStatus === GAME_STATUS.END && (
+        <GameResult 
+          score={score}
+          onReset={handleResetGame}
+        />
       )}
     </div>
   );
