@@ -42,6 +42,8 @@ function Game() {
   };
 
   const handleSubmitAnswer = (answerIndex) => {
+    if (answerIndex == null) return;
+    
     const currentQuestion = quizQuestions[currentQuestionIndex];
 
     const isCorrect = answerIndex === currentQuestion.correctAnswer;

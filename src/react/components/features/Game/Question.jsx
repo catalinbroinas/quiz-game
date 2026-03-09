@@ -39,7 +39,11 @@ function Question({
           ))}
         </fieldset>
 
-        <button type="submit" className="btn-primary">Check</button>
+        <button
+          type="submit"
+          className="btn-primary"
+          disabled={selectedAnswer === null}
+        >Check</button>
       </form>
     </div>
   );
