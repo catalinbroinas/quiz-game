@@ -1,8 +1,14 @@
-import { DIFFICULTY, CATEGORY } from "./gameConstants";
+import questions from "../data/questions";
 
-// State
+const availableCategories = [...new Set(questions.map(q => q.category))];
+
+const availableDifficulties = [...new Set(questions.map(q => q.difficulty))];
+
 export const DEFAULT_SETTINGS = {
-  numQuestions: 1,
-  difficulty: DIFFICULTY.EASY,
-  category: CATEGORY.TECHNOLOGY
+  category: availableCategories[0],
+  difficulty: availableDifficulties[0],
+  numQuestions: 1
 };
+
+export const AVAILABLE_CATEGORIES = availableCategories;
+export const AVAILABLE_DIFFICULTIES = availableDifficulties;
