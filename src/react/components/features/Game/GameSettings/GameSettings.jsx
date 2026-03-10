@@ -20,10 +20,10 @@ function GameSettings({ onApply }) {
   return (
     <div className="game__settings">
       <form className="form-container" onSubmit={handleSubmit}>
-        <NumberOfQuestions
-          numQuestions={settings.numQuestions}
-          onNumQuestionsChange={(value) =>
-            setSettings(prev => ({ ...prev, numQuestions: value}))
+        <QuizCategory
+          category={settings.category}
+          onCategoryChange={(value) =>
+            setSettings(prev => ({ ...prev, category: value}))
           }
         />
 
@@ -34,10 +34,10 @@ function GameSettings({ onApply }) {
           }
         />
 
-        <QuizCategory
-          category={settings.category}
-          onCategoryChange={(value) =>
-            setSettings(prev => ({ ...prev, category: value}))
+        <NumberOfQuestions
+          numQuestions={settings.numQuestions}
+          onNumQuestionsChange={(value) =>
+            setSettings(prev => ({ ...prev, numQuestions: value}))
           }
         />
 
