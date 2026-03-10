@@ -1,7 +1,7 @@
 import {
   CATEGORY,
   DIFFICULTY
-} from "../constants/quizOptions";
+} from "../constants/gameConstants";
 
 const questions = [
   {

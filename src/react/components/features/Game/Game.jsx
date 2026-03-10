@@ -6,9 +6,9 @@ import GameInfo from "./GameInfo";
 import GameResult from "./GameResult";
 
 import {
-  DEFAULT_SETTINGS,
-  GAME_STATUS
+  DEFAULT_SETTINGS
 } from "../../../constants/quizOptions";
+import { GAME_STATUS } from "../../../constants/gameConstants";
 import questions from "../../../data/questions";
 
 import { getFilteredQuestions } from "../../../utils/questions";

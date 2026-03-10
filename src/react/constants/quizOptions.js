@@ -1,16 +1,4 @@
-
-// Enums
-export const DIFFICULTY = {
-  EASY: "easy",
-  MEDIUM: "medium",
-  HARD: "hard"
-};
-
-export const CATEGORY = {
-  TECHNOLOGY: "technology",
-  GEOGRAPHY: "geography",
-  SPORT: "sport"
-};
+import { DIFFICULTY, CATEGORY } from "./gameConstants";
 
 // Options for UI
 export const QUESTION_OPTIONS = [1, 3, 5];
@@ -32,11 +20,4 @@ export const DEFAULT_SETTINGS = {
   numQuestions: 1,
   difficulty: DIFFICULTY.EASY,
   category: CATEGORY.TECHNOLOGY
-};
-
-export const GAME_STATUS = {
-  IDLE: 'idle',
-  LOADING: 'loading',
-  PLAYING: 'playing',
-  END: 'end'
 };
