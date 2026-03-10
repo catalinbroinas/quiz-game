@@ -2,7 +2,7 @@ import { useState } from "react";
 import NumberOfQuestions from "./NumberOfQuestions";
 import DifficultyLevel from "./DifficultyLevel";
 import QuizCategory from "./QuizCategory";
-import { DEFAULT_SETTINGS } from "../../../../constants/quizOptions";
+import { DEFAULT_SETTINGS } from "../../../../constants/quizConfig";
 
 function GameSettings({ onApply }) {
   const [settings, setSettings] = useState(DEFAULT_SETTINGS);
