@@ -1,6 +1,9 @@
-import { CATEGORY_OPTIONS } from "../../../../constants/quizOptions";
+import { AVAILABLE_CATEGORIES } from "../../../../constants/quizConfig";
 
 function QuizCategory({ category, onCategoryChange }) {
+  const formatLabel = (value) => 
+    value.charAt(0).toUpperCase() + value.slice(1);
+
   return (
     <div className="form-select-group">
       <label
@@ -14,9 +17,9 @@ function QuizCategory({ category, onCategoryChange }) {
         value={category}
         onChange={(e) => onCategoryChange(e.target.value)}
       >
-        {CATEGORY_OPTIONS.map(({ value, label }) => (
+        {AVAILABLE_CATEGORIES.map((value) => (
           <option key={value} value={value}>
-            {label}
+            {formatLabel(value)}
           </option>
         ))}
       </select>
