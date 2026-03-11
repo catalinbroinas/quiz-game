@@ -1,9 +1,16 @@
 import questions from "../data/questions";
 import { DIFFICULTY, CATEGORY } from "./gameConstants";
 
-const availableCategories = [...new Set(questions.map(q => q.category))];
+const validCategories = Object.values(CATEGORY);
+const validDifficulties = Object.values(DIFFICULTY);
 
-const availableDifficulties = [...new Set(questions.map(q => q.difficulty))];
+const availableCategories = validCategories.filter(category =>
+  questions.some(q => q.category === category)
+);
+
+const availableDifficulties = validDifficulties.filter(difficulty =>
+  questions.some(q => q.difficulty === difficulty)
+);
 
 const defaultCategory =
   availableCategories.includes(CATEGORY.TECHNOLOGY)
