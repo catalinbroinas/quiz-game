@@ -15,13 +15,17 @@ function GameSettings({ onApply }) {
   const [settings, setSettings] = useState(DEFAULT_SETTINGS);
   const [availableDifficulties, setAvailableDifficulties] = useState(INITIAL_DIFFICULTIES);
   const [availableQuestions, setAvailableQuestions] = useState(INITIAL_NUM_QUESTIONS);
+  const { category, difficulty, numQuestions } = settings;
   
   useEffect(() => {
-    const newDifficulties = getDifficultiesByCategory(questions, settings.category);
-    const newNumQuestions = getFilteredQuestions(questions, settings).length;
+    const newDifficulties = getDifficultiesByCategory(questions, category);
+    const newNumQuestions = getFilteredQuestions(questions, {
+      category,
+      difficulty
+    }).length;
 
     setAvailableDifficulties(newDifficulties);
-    if (!newDifficulties.includes(settings.difficulty)) {
+    if (!newDifficulties.includes(difficulty)) {
       setSettings(prev => ({
         ...prev,
         difficulty: newDifficulties[0]
@@ -29,13 +33,13 @@ function GameSettings({ onApply }) {
     }
 
     setAvailableQuestions(newNumQuestions);
-    if (newNumQuestions !== settings.numQuestions) {
+    if (newNumQuestions !== numQuestions) {
       setSettings(prev => ({
         ...prev,
         numQuestions: DEFAULT_SETTINGS.numQuestions
       }));
     }
-  }, [settings]);
+  }, [category, difficulty, numQuestions]);
 
   const normalizeSettings = (settings) => ({
     ...settings,
