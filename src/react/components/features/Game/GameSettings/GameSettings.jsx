@@ -13,8 +13,16 @@ function GameSettings({ onApply }) {
   
   useEffect(() => {
     const newDifficulties = getDifficultiesByCategory(questions, settings.category);
+
     setAvailableDifficulties(newDifficulties);
-  }, [settings.category]);
+
+    if (!newDifficulties.includes(settings.difficulty)) {
+      setSettings(prev => ({
+        ...prev,
+        difficulty: newDifficulties[0]
+      }));
+    }
+  }, [settings.difficulty, settings.category]);
 
   const normalizeSettings = (settings) => ({
     ...settings,
