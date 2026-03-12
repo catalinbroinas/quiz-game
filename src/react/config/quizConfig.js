@@ -1,15 +1,11 @@
 import questions from "../data/questions";
-import { DIFFICULTY, CATEGORY } from "./gameConstants";
+import { DIFFICULTY, CATEGORY } from "../constants/gameConstants";
+import { getDifficultiesByCategory } from "../utils/questions";
 
 const validCategories = Object.values(CATEGORY);
-const validDifficulties = Object.values(DIFFICULTY);
 
 const availableCategories = validCategories.filter(category =>
   questions.some(q => q.category === category)
-);
-
-const availableDifficulties = validDifficulties.filter(difficulty =>
-  questions.some(q => q.difficulty === difficulty)
 );
 
 const defaultCategory =
@@ -17,13 +13,7 @@ const defaultCategory =
     ? CATEGORY.TECHNOLOGY
     : availableCategories[0];
 
-const difficultiesByCategory = [
-  ...new Set(
-    questions
-      .filter(q => q.category === defaultCategory)
-      .map(q => q.difficulty)
-  )
-];
+const difficultiesByCategory = getDifficultiesByCategory(questions, defaultCategory);
 
 const defaultDifficulty =
   difficultiesByCategory.includes(DIFFICULTY.EASY)
@@ -37,4 +27,3 @@ export const DEFAULT_SETTINGS = {
 };
 
 export const AVAILABLE_CATEGORIES = availableCategories;
-export const AVAILABLE_DIFFICULTIES = availableDifficulties;

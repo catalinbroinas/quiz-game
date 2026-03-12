@@ -1,4 +1,4 @@
-import { AVAILABLE_CATEGORIES } from "../../../../constants/quizConfig";
+import { AVAILABLE_CATEGORIES } from "../../../../config/quizConfig";
 
 function QuizCategory({ category, onCategoryChange }) {
   const formatLabel = (value) => 

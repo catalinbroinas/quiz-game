@@ -5,7 +5,7 @@ import Question from "./Question";
 import GameInfo from "./GameInfo";
 import GameResult from "./GameResult";
 
-import { DEFAULT_SETTINGS } from "../../../constants/quizConfig";
+import { DEFAULT_SETTINGS } from "../../../config/quizConfig";
 import { GAME_STATUS } from "../../../constants/gameConstants";
 import questions from "../../../data/questions";
 
