@@ -1,4 +1,3 @@
-import { QUESTION_OPTIONS } from "../../../../constants/quizOptions";
 
 function NumberOfQuestions({ maxQuestions, selectedNumQuestions,  onNumQuestionsChange }) {
   return (
