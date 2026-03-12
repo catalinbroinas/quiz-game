@@ -33,12 +33,12 @@ function GameSettings({ onApply }) {
     }
 
     setAvailableQuestions(newNumQuestions);
-    if (newNumQuestions !== numQuestions) {
-      setSettings(prev => ({
-        ...prev,
-        numQuestions: DEFAULT_SETTINGS.numQuestions
-      }));
-    }
+    if (numQuestions > newNumQuestions) {
+    setSettings(prev => ({
+      ...prev,
+      numQuestions: newNumQuestions
+    }));
+  }
   }, [category, difficulty, numQuestions]);
 
   const normalizeSettings = (settings) => ({
