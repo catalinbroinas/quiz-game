@@ -27,3 +27,4 @@ export const DEFAULT_SETTINGS = {
 };
 
 export const AVAILABLE_CATEGORIES = availableCategories;
+export const INITIAL_DIFFICULTIES = difficultiesByCategory;

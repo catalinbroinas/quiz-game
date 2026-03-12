@@ -1,11 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import NumberOfQuestions from "./NumberOfQuestions";
 import DifficultyLevel from "./DifficultyLevel";
 import QuizCategory from "./QuizCategory";
 import { DEFAULT_SETTINGS } from "../../../../config/quizConfig";
+import { INITIAL_DIFFICULTIES } from "../../../../config/quizConfig";
+import { getDifficultiesByCategory } from "../../../../utils/questions";
+import questions from "../../../../data/questions";
 
 function GameSettings({ onApply }) {
   const [settings, setSettings] = useState(DEFAULT_SETTINGS);
+  const [availableDifficulties, setAvailableDifficulties] = useState(INITIAL_DIFFICULTIES);
+  
+  useEffect(() => {
+    const newDifficulties = getDifficultiesByCategory(questions, settings.category);
+    setAvailableDifficulties(newDifficulties);
+  }, [settings.category]);
 
   const normalizeSettings = (settings) => ({
     ...settings,
@@ -28,7 +37,8 @@ function GameSettings({ onApply }) {
         />
 
         <DifficultyLevel
-          difficulty={settings.difficulty}
+          difficulties={availableDifficulties}
+          selectedDifficulty={settings.difficulty}
           onDifficultyChange={(value) =>
             setSettings(prev => ({ ...prev, difficulty: value}))
           }

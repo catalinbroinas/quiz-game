@@ -1,6 +1,8 @@
-import { DIFFICULTY_OPTIONS } from "../../../../constants/quizOptions";
 
-function DifficultyLevel({ difficulty, onDifficultyChange }) {
+function DifficultyLevel({ difficulties, selectedDifficulty, onDifficultyChange }) {
+  const formatLabel = (value) =>
+    value.charAt(0).toUpperCase() + value.slice(1);
+
   return (
     <div className="form-select-group">
       <label
@@ -11,12 +13,12 @@ function DifficultyLevel({ difficulty, onDifficultyChange }) {
       <select
         id="difficulty-level"
         className="form-select"
-        value={difficulty}
+        value={selectedDifficulty}
         onChange={(e) => onDifficultyChange(e.target.value)}
       >
-        {DIFFICULTY_OPTIONS.map(({ value, label }) => (
+        {difficulties.map((value) => (
           <option key={value} value={value}>
-            {label}
+            {formatLabel(value)}
           </option>
         ))}
       </select>
