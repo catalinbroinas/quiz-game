@@ -1,6 +1,6 @@
 import { QUESTION_OPTIONS } from "../../../../constants/quizOptions";
 
-function NumberOfQuestions({ numQuestions, onNumQuestionsChange }) {
+function NumberOfQuestions({ maxQuestions, selectedNumQuestions,  onNumQuestionsChange }) {
   return (
     <div className="form-select-group">
       <label
@@ -11,14 +11,14 @@ function NumberOfQuestions({ numQuestions, onNumQuestionsChange }) {
       <select
         id="number-of-questions"
         className="form-select"
-        value={numQuestions}
+        value={selectedNumQuestions}
         onChange={(e) => onNumQuestionsChange(e.target.value)}
       >
-        {QUESTION_OPTIONS.map(option => (
-          <option key={option} value={option}>
-            {option}
+        {[...Array(maxQuestions).keys()].map((_, i) => 
+          <option key={i + 1} value={i + 1}>
+            {i + 1}
           </option>
-        ))}
+        )}
       </select>
     </div>
   );

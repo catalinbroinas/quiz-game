@@ -1,6 +1,6 @@
 import questions from "../data/questions";
 import { DIFFICULTY, CATEGORY } from "../constants/gameConstants";
-import { getDifficultiesByCategory } from "../utils/questions";
+import { getDifficultiesByCategory, getFilteredQuestions } from "../utils/questions";
 
 const validCategories = Object.values(CATEGORY);
 
@@ -28,3 +28,8 @@ export const DEFAULT_SETTINGS = {
 
 export const AVAILABLE_CATEGORIES = availableCategories;
 export const INITIAL_DIFFICULTIES = difficultiesByCategory;
+
+export const INITIAL_NUM_QUESTIONS = getFilteredQuestions(
+  questions,
+  DEFAULT_SETTINGS
+).length;
