@@ -93,7 +93,8 @@ function Game() {
       )}
 
       {gameStatus === GAME_STATUS.END && (
-        <GameResult 
+        <GameResult
+          questions={quizQuestions.length}
           score={score}
           onReset={handleResetGame}
         />
