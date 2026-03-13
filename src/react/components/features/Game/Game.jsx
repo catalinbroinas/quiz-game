@@ -66,6 +66,12 @@ function Game() {
     setGameStatus(GAME_STATUS.IDLE);
   };
 
+  const handlePlayAgain = () => {
+    setCurrentQuestionIndex(0);
+    setScore(0);
+    setGameStatus(GAME_STATUS.PLAYING);
+  };
+
   return (
     <div className="game">
       <h1 className="game__title">Quiz Game</h1>
@@ -97,6 +103,7 @@ function Game() {
           questions={quizQuestions.length}
           score={score}
           onReset={handleResetGame}
+          onPlayAgain={handlePlayAgain}
         />
       )}
     </div>
