@@ -15,7 +15,7 @@ function Question({
     <div className="game__question">
       <form className="form-container" onSubmit={handleSubmit}>
         <fieldset className="form-fieldset">
-          <legend className="form-label-text">
+          <legend className="text fw-bold mb-3">
             {question}
           </legend>
 
