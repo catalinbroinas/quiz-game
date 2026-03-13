@@ -1,5 +1,5 @@
 
-function Question({
+function GameQuestion({
   question,
   answers,
   selectedAnswer,
@@ -49,4 +49,4 @@ function Question({
   );
 }
 
-export default Question;
+export default GameQuestion;

@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 
 import GameSettings from "./GameSettings/GameSettings";
-import Question from "./Question";
 import GameInfo from "./GameInfo";
+import GameQuestion from "./GameQuestion";
 import GameResult from "./GameResult";
 
 import { DEFAULT_SETTINGS } from "../../../config/quizConfig";
@@ -88,7 +88,7 @@ function Game() {
             score={score}
           />
 
-          <Question
+          <GameQuestion
             question={currentQuestion.question}
             answers={currentQuestion.answers}
             selectedAnswer={selectedAnswer}
