@@ -1,7 +1,7 @@
 
 function NumberOfQuestions({ maxQuestions, selectedNumQuestions,  onNumQuestionsChange }) {
   return (
-    <div className="form-select-group">
+    <div className="form-select-group justify-content-between">
       <label
         htmlFor="number-of-questions"
         className="form-label-text"

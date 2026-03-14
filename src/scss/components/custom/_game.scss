@@ -25,6 +25,12 @@
     letter-spacing: 1px;
   }
 
+  &__settings {
+    margin: 0 auto;
+    width: fit-content;
+    max-width: 100%;
+  }
+
   &__info {
     background-color: $bg-section;
     padding: 1rem 1.5rem;

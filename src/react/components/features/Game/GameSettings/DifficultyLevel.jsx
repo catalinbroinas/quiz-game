@@ -4,7 +4,7 @@ function DifficultyLevel({ difficulties, selectedDifficulty, onDifficultyChange 
     value.charAt(0).toUpperCase() + value.slice(1);
 
   return (
-    <div className="form-select-group">
+    <div className="form-select-group justify-content-between">
       <label
         htmlFor="difficulty-level"
         className="form-label-text"
