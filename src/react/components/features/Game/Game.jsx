@@ -19,8 +19,11 @@ function Game() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(null);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const [showResult, setShowResult] = useState(false);
 
   const currentQuestion = quizQuestions[currentQuestionIndex];
+
+  const toggleShowResult = () => setShowResult(prev => !prev);
 
   useEffect(() => {
     if (gameStatus === GAME_STATUS.LOADING) {
@@ -45,9 +48,14 @@ function Game() {
     
     const currentQuestion = quizQuestions[currentQuestionIndex];
 
-    const isCorrect = answerIndex === currentQuestion.correctAnswer;
-    if (isCorrect) {
-      setScore(prev => prev + 1);
+    if (!showResult) {
+      const isCorrect = answerIndex === currentQuestion.correctAnswer;
+      if (isCorrect) {
+        setScore(prev => prev + 1);
+      }
+
+      toggleShowResult();
+      return;
     }
 
     const isLastQuestion = currentQuestionIndex === quizQuestions.length - 1;
@@ -56,6 +64,7 @@ function Game() {
       : setCurrentQuestionIndex(prev => prev + 1);
       
     setSelectedAnswer(null);
+    toggleShowResult();
   };
 
   const handleResetGame = () => {
@@ -63,12 +72,14 @@ function Game() {
     setQuizQuestions([]);
     setCurrentQuestionIndex(0);
     setScore(null);
+    setShowResult(false);
     setGameStatus(GAME_STATUS.IDLE);
   };
 
   const handlePlayAgain = () => {
     setCurrentQuestionIndex(0);
     setScore(0);
+    setShowResult(false);
     setGameStatus(GAME_STATUS.PLAYING);
   };
 
@@ -91,7 +102,10 @@ function Game() {
           <GameQuestion
             question={currentQuestion.question}
             answers={currentQuestion.answers}
+            correctAnswer={currentQuestion.correctAnswer}
             selectedAnswer={selectedAnswer}
+            showResult={showResult}
+            isLastQuestion={currentQuestionIndex === quizQuestions.length - 1}
             onAnswerChange={setSelectedAnswer}
             onSubmit={handleSubmitAnswer}
           />

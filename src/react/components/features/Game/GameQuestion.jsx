@@ -2,7 +2,10 @@
 function GameQuestion({
   question,
   answers,
+  correctAnswer,
   selectedAnswer,
+  showResult,
+  isLastQuestion,
   onAnswerChange,
   onSubmit
 }) {
@@ -28,13 +31,29 @@ function GameQuestion({
                 className="form-check-input"
                 value={index}
                 checked={selectedAnswer === index}
+                disabled={showResult}
                 onChange={() => onAnswerChange(index)}
               />
 
               <label
                 htmlFor={`answer-${index}`}
                 className="form-check-label"
-              >{answer}</label>
+              >
+                {!showResult ? answer : (
+                  selectedAnswer === correctAnswer
+                    ? (
+                      selectedAnswer === index
+                        ? <span className="game__question-feedback-success">{answer}</span>
+                        : answer
+                    ) : (
+                      selectedAnswer === index
+                        ? <span className="game__question-feedback-wrong">{answer}</span>
+                        : correctAnswer === index
+                          ? <span className="game__question-correct">{answer}</span>
+                          : answer
+                    )
+                )}
+              </label>
             </div>
           ))}
         </fieldset>
@@ -43,7 +62,11 @@ function GameQuestion({
           type="submit"
           className="btn-primary"
           disabled={selectedAnswer === null}
-        >Check</button>
+        >
+          {!showResult ? 'Check' : (
+            isLastQuestion ? 'Finish' : 'Next'
+          )}
+        </button>
       </form>
     </div>
   );
