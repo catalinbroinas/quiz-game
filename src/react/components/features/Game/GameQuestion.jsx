@@ -9,6 +9,27 @@ function GameQuestion({
   onAnswerChange,
   onSubmit
 }) {
+    const getAnswerContent = (answer, index) => {
+    if (!showResult) return answer;
+
+    if (selectedAnswer === correctAnswer) {
+      if (selectedAnswer === index) {
+        return <span className="game__question-answer--correct">{answer}</span>;
+      }
+      return answer;
+    }
+
+    if (selectedAnswer === index) {
+      return <span className="game__question-answer--wrong">{answer}</span>;
+    }
+
+    if (correctAnswer === index) {
+      return <span className="game__question-answer--correct-reveal">{answer}</span>;
+    }
+
+    return answer;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit(selectedAnswer);
@@ -39,20 +60,7 @@ function GameQuestion({
                 htmlFor={`answer-${index}`}
                 className="game__question-answer"
               >
-                {!showResult ? answer : (
-                  selectedAnswer === correctAnswer
-                    ? (
-                      selectedAnswer === index
-                        ? <span className="game__question-answer--correct">{answer}</span>
-                        : answer
-                    ) : (
-                      selectedAnswer === index
-                        ? <span className="game__question-answer--wrong">{answer}</span>
-                        : correctAnswer === index
-                          ? <span className="game__question-answer--correct-reveal">{answer}</span>
-                          : answer
-                    )
-                )}
+                {getAnswerContent(answer, index)}
               </label>
             </div>
           ))}
