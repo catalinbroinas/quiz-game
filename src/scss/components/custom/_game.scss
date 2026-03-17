@@ -50,6 +50,20 @@
     margin-right: $spacing-md;
   }
 
+  &__question-feedback-success {
+    font-weight: 700;
+    color: $success-text;
+  }
+
+  &__question-feedback-wrong {
+    font-weight: 700;
+    color: $danger-text;
+  }
+
+  &__question-correct {
+    color: $success-text;
+  }
+
   &__result {
     background-color: $bg-section;
     padding: 1.5rem;
