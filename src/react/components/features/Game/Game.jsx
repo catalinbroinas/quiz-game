@@ -46,11 +46,11 @@ function Game() {
   const handleSubmitAnswer = (answerIndex) => {
     if (answerIndex == null) return;
     
-    const currentQuestion = quizQuestions[currentQuestionIndex];
+    const correctAnswer = quizQuestions[currentQuestionIndex].correctAnswer
 
+    // Check answer
     if (!showResult) {
-      const isCorrect = answerIndex === currentQuestion.correctAnswer;
-      if (isCorrect) {
+      if (answerIndex === correctAnswer) {
         setScore(prev => prev + 1);
       }
 
@@ -58,6 +58,7 @@ function Game() {
       return;
     }
 
+    // Next
     const isLastQuestion = currentQuestionIndex === quizQuestions.length - 1;
     isLastQuestion 
       ? setGameStatus(GAME_STATUS.END)
