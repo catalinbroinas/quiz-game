@@ -50,17 +50,30 @@
     margin-right: $spacing-md;
   }
 
-  &__question-feedback-success {
-    font-weight: 700;
+  &__question-radio + &__question-answer {
+    cursor: pointer;
+  }
+
+  &__question-radio:disabled + &__question-answer {
+    cursor: default;
+  }
+
+  &__question-answer {
+    @include custom-text();
+  }
+
+  &__question-answer--correct {
+    font-weight: 600;
     color: $success-text;
   }
 
-  &__question-feedback-wrong {
-    font-weight: 700;
+  &__question-answer--wrong {
+    font-weight: 600;
     color: $danger-text;
   }
 
-  &__question-correct {
+  &__question-answer--correct-reveal {
+    font-weight: 500;
     color: $success-text;
   }
 

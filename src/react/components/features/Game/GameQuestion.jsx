@@ -28,7 +28,7 @@ function GameQuestion({
                 type="radio"
                 name="answer"
                 id={`answer-${index}`}
-                className="form-check-input"
+                className="form-check-input game__question-radio"
                 value={index}
                 checked={selectedAnswer === index}
                 disabled={showResult}
@@ -37,19 +37,19 @@ function GameQuestion({
 
               <label
                 htmlFor={`answer-${index}`}
-                className="form-check-label"
+                className="game__question-answer"
               >
                 {!showResult ? answer : (
                   selectedAnswer === correctAnswer
                     ? (
                       selectedAnswer === index
-                        ? <span className="game__question-feedback-success">{answer}</span>
+                        ? <span className="game__question-answer--correct">{answer}</span>
                         : answer
                     ) : (
                       selectedAnswer === index
-                        ? <span className="game__question-feedback-wrong">{answer}</span>
+                        ? <span className="game__question-answer--wrong">{answer}</span>
                         : correctAnswer === index
-                          ? <span className="game__question-correct">{answer}</span>
+                          ? <span className="game__question-answer--correct-reveal">{answer}</span>
                           : answer
                     )
                 )}
