@@ -1,18 +1,22 @@
 import { useState, useEffect } from "react";
 
+// Components
 import GameSettings from "./GameSettings/GameSettings";
 import GameInfo from "./GameInfo";
 import GameQuestion from "./GameQuestion";
 import GameResult from "./GameResult";
 
+// Config & data
 import { DEFAULT_SETTINGS } from "../../../config/quizConfig";
 import { GAME_STATUS } from "../../../constants/gameConstants";
 import questions from "../../../data/questions";
 
+// Helper
 import { getFilteredQuestions } from "../../../utils/questions";
 import { shuffleArray, takeFirst } from "../../../../js/utils/arrayUtils";
 
 function Game() {
+  // States
   const [settings, setSettings] = useState(DEFAULT_SETTINGS);
   const [gameStatus, setGameStatus] = useState(GAME_STATUS.IDLE);
   const [quizQuestions, setQuizQuestions] = useState([]);
@@ -21,21 +25,24 @@ function Game() {
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [showResult, setShowResult] = useState(false);
 
+  // Constants
   const currentQuestion = quizQuestions[currentQuestionIndex];
+  const isLastQuestion = currentQuestionIndex === quizQuestions.length - 1;
 
   const toggleShowResult = () => setShowResult(prev => !prev);
 
+  // Generate quiz questions when the game enters LOADING state
   useEffect(() => {
-    if (gameStatus === GAME_STATUS.LOADING) {
-      const filteredQuestions = getFilteredQuestions(questions, settings);
-      const shuffledQuestions = shuffleArray(filteredQuestions);
-      const selectedQuestions = takeFirst(shuffledQuestions, settings.numQuestions);
+    if (gameStatus !== GAME_STATUS.LOADING) return;
 
-      setQuizQuestions(selectedQuestions);
-      setCurrentQuestionIndex(0);
-      setScore(0);
-      setGameStatus(GAME_STATUS.PLAYING);
-    }
+    const filteredQuestions = getFilteredQuestions(questions, settings);
+    const shuffledQuestions = shuffleArray(filteredQuestions);
+    const selectedQuestions = takeFirst(shuffledQuestions, settings.numQuestions);
+
+    setQuizQuestions(selectedQuestions);
+    setCurrentQuestionIndex(0);
+    setScore(0);
+    setGameStatus(GAME_STATUS.PLAYING);
   }, [gameStatus, settings]);
 
   const handleApplySettings = (newSettings) => {
@@ -59,7 +66,6 @@ function Game() {
     }
 
     // Next
-    const isLastQuestion = currentQuestionIndex === quizQuestions.length - 1;
     isLastQuestion 
       ? setGameStatus(GAME_STATUS.END)
       : setCurrentQuestionIndex(prev => prev + 1);
@@ -106,7 +112,7 @@ function Game() {
             correctAnswer={currentQuestion.correctAnswer}
             selectedAnswer={selectedAnswer}
             showResult={showResult}
-            isLastQuestion={currentQuestionIndex === quizQuestions.length - 1}
+            isLastQuestion={isLastQuestion}
             onAnswerChange={setSelectedAnswer}
             onSubmit={handleSubmitAnswer}
           />
